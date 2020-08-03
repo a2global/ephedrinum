@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Datasheets{% endblock %}
+{% block page_title %}Datasheets examples{% endblock %}
+
+{% block page_body %}
+    {{ datasheet(arrayDatasheet) }}
+    {{ pagination(arrayDatasheet) }}
+{% endblock %}
