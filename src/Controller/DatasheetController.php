@@ -24,20 +24,12 @@ class DatasheetController extends AbstractController
     /** @Route("use-cases", name="use_cases") */
     public function useCasesAction()
     {
-        $arrayDatasheet = new Datasheet($this->getUseCasesArray());
+        $qb = $this->getDoctrine()->getRepository('App:Movie')->createQueryBuilder('m');
+        $movieDatasheet = new Datasheet($qb);
 
-        return $this->render('datasheet/examples.html.twig', [
-            'arrayDatasheet' => $arrayDatasheet,
+        return $this->render('datasheet/user_cases.html.twig', [
+            'movieDatasheet' => $movieDatasheet,
         ]);
-    }
-
-    protected function getUseCasesArray()
-    {
-        return [
-            ['id' => '1', 'title' => 'Sample'],
-            ['id' => '2', 'title' => 'English'],
-            ['id' => '3', 'title' => 'Кириллица'],
-        ];
     }
 
     protected function getSampleArray()
